@@ -140,6 +140,8 @@ font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ox
     font-size: 60px;
     font-weight: 100;
     line-height: 1;
+    width: 100%;
+    height: 100%;
     display: none;
   }
   figure img {
@@ -212,5 +214,9 @@ font-size: large;}
       flex-basis: 100%;
   }
 }
-Link{width: 100%;
-text-decoration: none;}
+.link{text-decoration: none;
+width: 100%;}
+figure figcaption button .link{
+  width: 100%;
+  height: max-content;
+}

@@ -1,14 +1,36 @@
 import { Outlet, Link } from "react-router-dom";
 import React from "react";
 function Imagecards() {
-  let movieSelection = (e) => {
-    e.preventDefault()
-    console.log(e.target.innerHTML)
+  // const title = useRef(null)
+  // console.log(title.current)
+  // let movieSelection = (event) => {
+  //   event.preventDefault()
+  //   console.log('hello')
+  //   if(event.target.classList.contains('image_container')){
+  //     console.log(title.current)
+
+  //   }
+  // }
+  let moviename1 = () => {
+    localStorage.setItem('m1',"Athiran")
+
+  }
+  let moviename2 = () => {
+    localStorage.setItem('m1',"Hugo")
+
+  }
+  let moviename3 = () => {
+    localStorage.setItem('m1',"Lunch Box")
+
+  }
+  let moviename4 = () => {
+    localStorage.setItem('m1',"Vikram")
+
   }
   return (
     <>
     <div>
-      <div className="image_container" onClick={(e) => movieSelection(e)}>
+      <div className="image_container">
         <figure className="image-block">
           <h1 className="title">Athiran</h1>
           <img src="Athiran.jpg" alt="" />
@@ -20,14 +42,8 @@ function Imagecards() {
               sed. Velit vitae deserunt maxime obcaecati, corporis ipsa aut id
               ad facilis.
             </p>
-            <button>
-              <nav>
-                <ul>
-                  <li>
-                     <Link to="/seatSelection">Book Now</Link>
-                  </li>
-                </ul>
-              </nav>
+            <button  onClick={moviename1}> 
+                     <Link to="/seatSelection" className="link">Book Now</Link>
             </button>
           </figcaption>
         </figure>
@@ -45,13 +61,7 @@ function Imagecards() {
               ad facilis.
             </p>
             <button>
-            <nav>
-                <ul>
-                  <li>
-                     <Link to="/seatSelection">Book Now</Link>
-                  </li>
-                </ul>
-              </nav>
+                     <Link to="/seatSelection" onClick={moviename2}>Book Now</Link>
             </button>
           </figcaption>
         </figure>
@@ -67,13 +77,7 @@ function Imagecards() {
               ad facilis.
             </p>
             <button>
-            <nav>
-                <ul>
-                  <li>
-                     <Link to="/seatSelection">Book Now</Link>
-                  </li>
-                </ul>
-              </nav>
+                     <Link to="/seatSelection" onClick={moviename3}>Book Now</Link>
             </button>
           </figcaption>
         </figure>
@@ -89,13 +93,7 @@ function Imagecards() {
               ad facilis.
             </p>
             <button>
-            <nav>
-                <ul>
-                  <li>
-                     <Link to="/seatSelection">Book Now</Link>
-                  </li>
-                </ul>
-              </nav>
+                     <Link to="/seatSelection" onClick={moviename4}>Book Now</Link>
             </button>
           </figcaption>
         </figure>

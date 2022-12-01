@@ -5,9 +5,8 @@ import Screen from "./Screen";
 import Total from "./Total";
 import Button from "./Button";
 function Seats({totalAmount}) {
-  let [seatArray] = useState([])
-  let [count] =useState(0)
-
+  let [seatArray, setSeatArray] = useState([])
+  let [count,setCount] =useState(0)
   let selection = (e) => {
     e.preventDefault();
     if (
@@ -18,14 +17,17 @@ function Seats({totalAmount}) {
       e.target.classList.toggle("selected");
       if (e.target.classList.contains("selected"))
         { e.preventDefault()
-          seatArray.push(e.target.textContent)
-          count ++
+          // seatArray.push(e.target.textContent)
+          let ArrayTemp = [...seatArray]
+          ArrayTemp.push(e.target.textContent)
+          setSeatArray(ArrayTemp)
+          setCount(count + 1)
           console.log(count)
-          console.log(seatArray)
+          // console.log(seatArray)
         }
         else
-        {
-          seatArray.removeByValue = function (val)
+        { let tempDeleteArray = [...seatArray]
+          tempDeleteArray.removeByValue = function (val)
                                     {
                                       for (let i = 0; i < this.length; i++)
                                       { if (this[i] === val)
@@ -36,17 +38,22 @@ function Seats({totalAmount}) {
                                       }
                                       return this;
                                     }
-          seatArray.removeByValue(e.target.textContent);
-          count--; 
+          tempDeleteArray.removeByValue(e.target.textContent);
+          setSeatArray(tempDeleteArray)
+          setCount(count - 1)
+          console.log(count)
         }
     }
+    
+    
+      document.getElementById('movieId').textContent = localStorage.getItem('m1')
+    
   };
-  totalAmount = 5
   return (
     <div>
       <div className="container"  onClick={(e) => selection(e)}>
         <h1>SELECT YOUR SEATS</h1>
-        <h2 id="movieId">MOVIE NAME</h2>
+        <h2 id="movieId">....</h2>
         <div className="seat">
           <div className="table">
             <div className="row1">
@@ -121,7 +128,7 @@ function Seats({totalAmount}) {
         </div>
       </div>
             <Screen></Screen>
-            <Total></Total>
+            <Total count={count} seatArray={seatArray}></Total>
             <Button></Button>
     </div>
   );
