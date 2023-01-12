@@ -1,11 +1,12 @@
-import React from 'react'
-import PaymentComponent from '../components/payment/paymentComponent'
+import React from "react";
+import PaymentComponent from "../components/payment/paymentComponent";
+
 function Payment() {
   return (
     <div>
-            <PaymentComponent></PaymentComponent>
+      <PaymentComponent></PaymentComponent>
     </div>
-  )
+  );
 }
 
-export default Payment
+export default Payment;

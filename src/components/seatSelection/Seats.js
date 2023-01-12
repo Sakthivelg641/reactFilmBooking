@@ -1,57 +1,52 @@
 import React from "react";
-import { useState} from "react";
+import { useState } from "react";
 import "./seatSelection.css";
 import Screen from "./Screen";
 import Total from "./Total";
 import Button from "./Button";
-function Seats({totalAmount}) {
-  let [seatArray, setSeatArray] = useState([])
-  let [count,setCount] =useState(0)
+
+function Seats({ totalAmount }) {
+  let [seatArray, setSeatArray] = useState([]);
+  let [count, setCount] = useState(0);
   let selection = (e) => {
     e.preventDefault();
     if (
       e.target.classList.contains("seats") &&
       !e.target.classList.contains("booked")
     ) {
-      
       e.target.classList.toggle("selected");
-      if (e.target.classList.contains("selected"))
-        { e.preventDefault()
-          // seatArray.push(e.target.textContent)
-          let ArrayTemp = [...seatArray]
-          ArrayTemp.push(e.target.textContent)
-          setSeatArray(ArrayTemp)
-          setCount(count + 1)
-          console.log(count)
-          // console.log(seatArray)
-        }
-        else
-        { let tempDeleteArray = [...seatArray]
-          tempDeleteArray.removeByValue = function (val)
-                                    {
-                                      for (let i = 0; i < this.length; i++)
-                                      { if (this[i] === val)
-                                        {
-                                          this.splice(i, 1);
-                                          i--;
-                                        }
-                                      }
-                                      return this;
-                                    }
-          tempDeleteArray.removeByValue(e.target.textContent);
-          setSeatArray(tempDeleteArray)
-          setCount(count - 1)
-          console.log(count)
-        }
+      if (e.target.classList.contains("selected")) {
+        e.preventDefault();
+        // seatArray.push(e.target.textContent)
+        let ArrayTemp = [...seatArray];
+        ArrayTemp.push(e.target.textContent);
+        setSeatArray(ArrayTemp);
+        setCount(count + 1);
+        console.log(count);
+        // console.log(seatArray)
+      } else {
+        let tempDeleteArray = [...seatArray];
+        tempDeleteArray.removeByValue = function (val) {
+          for (let i = 0; i < this.length; i++) {
+            if (this[i] === val) {
+              this.splice(i, 1);
+              i--;
+            }
+          }
+          return this;
+        };
+        tempDeleteArray.removeByValue(e.target.textContent);
+        setSeatArray(tempDeleteArray);
+        setCount(count - 1);
+        console.log(count);
+      }
     }
-    
-    
-      document.getElementById('movieId').textContent = localStorage.getItem('m1')
-    
+
+    document.getElementById("movieId").textContent = localStorage.getItem("m1");
   };
   return (
     <div>
-      <div className="container"  onClick={(e) => selection(e)}>
+      <div className="container" onClick={(e) => selection(e)}>
         <h1>SELECT YOUR SEATS</h1>
         <h2 id="movieId">....</h2>
         <div className="seat">
@@ -127,11 +122,13 @@ function Seats({totalAmount}) {
           </div>
         </div>
       </div>
-            <Screen></Screen>
-            <Total count={count} seatArray={seatArray}></Total>
-            <Button></Button>
+      <Screen></Screen>
+      <Total count={count} seatArray={seatArray}></Total>
+      <Button></Button>
     </div>
   );
 }
 
 export default Seats;
+
+// Render table with dynamic data

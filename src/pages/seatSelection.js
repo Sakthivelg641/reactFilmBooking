@@ -1,11 +1,12 @@
-import React from 'react'
-import Seats from '../components/seatSelection/Seats';
+import React from "react";
+import Seats from "../components/seatSelection/Seats";
+
 function SeatSelection() {
   return (
     <div>
-            <Seats></Seats>
+      <Seats></Seats>
     </div>
-  )
+  );
 }
 
-export default SeatSelection
+export default SeatSelection;
